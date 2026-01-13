@@ -26,8 +26,13 @@ if (nav && hamburger) {
     hamburger.setAttribute("aria-expanded", String(open));
   };
 
-  hamburger.addEventListener("click", () => {
+  hamburger.addEventListener("click", (event) => {
+    event.stopPropagation();
     setOpen(!nav.classList.contains("open"));
+  });
+
+  nav.addEventListener("click", (event) => {
+    event.stopPropagation();
   });
 
   nav.querySelectorAll("a").forEach((link) => {
@@ -35,6 +40,9 @@ if (nav && hamburger) {
   });
 
   document.addEventListener("click", (event) => {
+    if (window.matchMedia("(hover: none)").matches) {
+      return;
+    }
     if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
       setOpen(false);
     }
@@ -57,8 +65,10 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
       return 0;
     }
     const styles = getComputedStyle(track);
-    const gap = parseFloat(styles.gap || styles.columnGap || "0");
-    return card.getBoundingClientRect().width + gap;
+    const rawGap = styles.gap || styles.columnGap || "0";
+    const gap = Number.parseFloat(rawGap);
+    const safeGap = Number.isFinite(gap) ? gap : 0;
+    return card.getBoundingClientRect().width + safeGap;
   };
 
   const getMaxIndex = (step) => {
@@ -134,6 +144,8 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   carousel.addEventListener("focusin", stopAutoplay);
   carousel.addEventListener("focusout", startAutoplay);
   carousel.addEventListener("pointerdown", stopAutoplay);
+  carousel.addEventListener("pointerup", startAutoplay);
+  carousel.addEventListener("pointercancel", startAutoplay);
   update();
   startAutoplay();
 });

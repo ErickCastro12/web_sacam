@@ -726,11 +726,17 @@ button {
   }
 
   .carousel {
-    grid-template-columns: 1fr;
+    grid-template-columns: 40px 1fr 40px;
   }
 
   .carousel__btn {
-    display: none;
+    width: 36px;
+    height: 36px;
+  }
+
+  .carousel__btn span {
+    width: 10px;
+    height: 10px;
   }
 }
 
