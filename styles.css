@@ -741,12 +741,40 @@ button {
 }
 
 @media (max-width: 860px) {
+  .header__inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "brand"
+      "actions"
+      "nav";
+    justify-items: center;
+  }
+
+  .brand {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .brand__text {
+    align-items: center;
+  }
+
+  .brand__logo {
+    height: 80px;
+  }
+
   .brand__name {
     font-size: 17px;
   }
 
   .brand__tagline {
     display: none;
+  }
+
+  .header__actions {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .nav {
