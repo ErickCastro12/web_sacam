@@ -33,6 +33,10 @@ body {
   overflow-x: hidden;
 }
 
+body.nav-open {
+  overflow: hidden;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 110px;
@@ -257,6 +261,21 @@ button {
   height: 2px;
   background: var(--ink);
   border-radius: 10px;
+}
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 24, 40, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 20;
+}
+
+.nav-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .hero {
@@ -742,17 +761,15 @@ button {
 
 @media (max-width: 860px) {
   .header__inner {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "brand"
-      "actions"
-      "nav";
-    justify-items: center;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "actions brand";
+    align-items: center;
   }
 
   .brand {
     flex-direction: column;
     text-align: center;
+    justify-self: center;
   }
 
   .brand__text {
@@ -772,33 +789,54 @@ button {
   }
 
   .header__actions {
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
+    width: auto;
+    justify-self: start;
   }
 
   .nav {
-    width: 100%;
-    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: min(78vw, 320px);
+    background: var(--brand-blue);
     border-radius: 0;
-    padding: 6px 0 0;
-    box-shadow: none;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 14px;
+    padding: 96px 24px 24px;
+    box-shadow: 12px 0 30px rgba(8, 24, 40, 0.35);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 30;
   }
 
-  .nav.open {
-    display: flex;
+  .nav a {
+    color: #ffffff;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.95rem;
   }
 
-  .hamburger {
+  .nav a::after {
     display: none;
   }
 
+  .nav.open {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
   .header__actions .btn--ghost {
+    display: none;
+  }
+
+  .header__actions .btn--primary {
     display: none;
   }
 }

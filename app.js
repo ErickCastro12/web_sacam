@@ -20,10 +20,16 @@ if (yearEl) {
 
 const nav = document.getElementById("nav");
 const hamburger = document.getElementById("hamburger");
+const navOverlay = document.getElementById("navOverlay");
 if (nav && hamburger) {
   const setOpen = (open) => {
     nav.classList.toggle("open", open);
     hamburger.setAttribute("aria-expanded", String(open));
+    if (navOverlay) {
+      navOverlay.classList.toggle("open", open);
+      navOverlay.setAttribute("aria-hidden", String(!open));
+    }
+    document.body.classList.toggle("nav-open", open);
   };
 
   hamburger.addEventListener("click", (event) => {
@@ -35,15 +41,34 @@ if (nav && hamburger) {
     event.stopPropagation();
   });
 
+  navOverlay?.addEventListener("click", () => {
+    setOpen(false);
+  });
+
   nav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => setOpen(false));
   });
 
   document.addEventListener("click", (event) => {
+    if (!nav.classList.contains("open")) {
+      return;
+    }
     if (window.matchMedia("(hover: none)").matches) {
       return;
     }
     if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
+      setOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setOpen(false);
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (!window.matchMedia("(max-width: 860px)").matches) {
       setOpen(false);
     }
   });
