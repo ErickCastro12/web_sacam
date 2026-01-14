@@ -1,0 +1,16 @@
+:root {
+  --blue: #1f6ae1;
+  --navy: #0b2b5b;
+  --accent: #ff8a00;
+  --green: #ff8a00;
+  --dark: #2e3440;
+  --light: #f5f8fc;
+  --gray: #5b6675;
+  --white: #ffffff;
+  --radius: 16px;
+  --shadow: 0 18px 40px rgba(11, 43, 91, 0.12);
+  --brand-blue: #0b2b5b;
+  --brand-blue-soft: #1f6ae1;
+  --brand-teal: #1f6ae1;
+  --border: #e2e6ef;
+}

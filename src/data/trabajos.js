@@ -1,0 +1,51 @@
+export const trabajos = [
+  {
+    id: "proyecto-1",
+    title: "Instalación split residencial",
+    description:
+      "Instalación completa con drenaje oculto y configuración eficiente.",
+    location: "Miraflores",
+    service: "Instalación",
+    cover: "/trabajos/Instalacion%20de%20condensadores.jpg",
+    photos: [
+      "/trabajos/Instalacion%20de%20condensadores.jpg",
+      "/trabajos/split.jpg",
+      "/trabajos/Mantenimiento%20Preventivo2.jpg",
+      "/trabajos/Rejillas2.png",
+      "/trabajos/ductos%20de%20ventilacion.gif",
+      "/trabajos/Ductos%20Instalacion%202.jpg",
+    ],
+  },
+  {
+    id: "proyecto-2",
+    title: "Mantenimiento oficina",
+    description: "Limpieza interna, revisión y calibración de equipos.",
+    location: "San Isidro",
+    service: "Mantenimiento",
+    cover: "/trabajos/Mantenimiento%20Preventivo2.jpg",
+    photos: [
+      "/trabajos/Mantenimiento%20Preventivo2.jpg",
+      "/trabajos/split.jpg",
+      "/trabajos/Rejillas2.png",
+      "/trabajos/rejillas.png",
+      "/trabajos/Instalacion%20de%20condensadores.jpg",
+      "/trabajos/Ductos%20Instalacion%202.jpg",
+    ],
+  },
+  {
+    id: "proyecto-3",
+    title: "Ductos y ventilación",
+    description: "Instalación de ductos con optimización de flujo de aire.",
+    location: "Surco",
+    service: "Ventilación",
+    cover: "/trabajos/Ductos%20Instalacion%202.jpg",
+    photos: [
+      "/trabajos/Ductos%20Instalacion%202.jpg",
+      "/trabajos/ductos%20de%20ventilacion.gif",
+      "/trabajos/rejillas.png",
+      "/trabajos/Rejillas2.png",
+      "/trabajos/split.jpg",
+      "/trabajos/Instalacion%20de%20condensadores.jpg",
+    ],
+  },
+];
