@@ -44,7 +44,7 @@ const navItems = [
   { label: "Servicios", href: "#servicios" },
   { label: "Trabajos", href: "#trabajos" },
   { label: "Beneficios", href: "#beneficios" },
-  { label: "Testimonios", href: "#testimonios" },
+  { label: "Quienes somos", href: "#quienes-somos" },
   { label: "Contacto", href: "#contacto" },
 ];
 

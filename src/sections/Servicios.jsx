@@ -11,7 +11,7 @@ export default function Servicios() {
       <div className="container">
         <SectionTitle
           title="Servicios que resuelven hoy y evitan problemas mañana"
-          subtitle="Soluciones claras, precios transparentes y respaldo técnico especializado en Lima."
+          subtitle="Soluciones claras, precios transparentes y respaldo técnico especializado en Lima y Provincias."
         />
         <div className="services-grid services-grid--desktop">
           {servicios.map((servicio) => (

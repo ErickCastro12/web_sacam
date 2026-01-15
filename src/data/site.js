@@ -1,6 +1,6 @@
 export const site = {
-  companyName: "AIRE ACONDICIONADO, VENTILACIÓN, EXTRACCIÓN",
-  tagline: "Y FABRICACIÓN DE DUCTOS Y REJILLAS",
+  companyName: "AIRE ACONDICIONADO, VENTILACIÓN, EXTRACCIÓN Y FABRICACIÓN DE DUCTOS Y REJILLAS",
+  tagline: "",
   whatsapp: "51955879334",
   whatsappUrl: "https://wa.me/51955879334",
   location: "Lima, Perú",

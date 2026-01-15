@@ -16,8 +16,8 @@ export default function Trabajos() {
     <section id="trabajos">
       <div className="container">
         <SectionTitle
-          title="Proyectos destacados"
-          subtitle="Explora un resumen de nuestros trabajos y abre cada caso para ver el detalle."
+          title="Proyectos Realizados"
+          subtitle="Explora un resumen de nuestros trabajos y abre Ver fotos para ver el plan de trabajo ."
         />
         <ProjectsCarousel
           projects={trabajos}
