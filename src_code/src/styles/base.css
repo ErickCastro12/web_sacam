@@ -351,11 +351,15 @@ img {
 
 .mobile-drawer-close {
   border: 1px solid rgba(255, 255, 255, 0.25);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
   color: var(--white);
-  border-radius: 999px;
-  padding: 6px 12px;
-  font-size: 12px;
+  border-radius: 12px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -414,6 +418,10 @@ img {
   align-items: center;
   font-size: 14px;
   color: var(--white);
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .mobile-drawer-contact-icon {
@@ -429,6 +437,16 @@ img {
   width: 18px;
   height: 18px;
   display: block;
+}
+
+.mobile-drawer-cta {
+  margin-top: auto;
+}
+
+.mobile-drawer-cta .btn {
+  width: 100%;
+  justify-content: center;
+  font-size: 14px;
 }
 
 .whatsapp-float {
@@ -1472,7 +1490,7 @@ textarea {
     align-items: center;
     justify-content: space-between;
     text-align: left;
-    padding: 10px 0;
+    padding: 8px 0;
     row-gap: 0;
     column-gap: 12px;
   }
@@ -1482,6 +1500,7 @@ textarea {
     justify-content: flex-start;
     flex-direction: row;
     gap: 10px;
+    min-width: 0;
   }
 
   .site-brand-logo {
@@ -1490,7 +1509,11 @@ textarea {
   }
 
   .site-brand-wordmark {
-    display: none;
+    display: block;
+    width: clamp(120px, 36vw, 180px);
+    max-width: 180px;
+    height: auto;
+    flex-shrink: 1;
   }
 
   .site-brand-text {
@@ -1549,7 +1572,8 @@ textarea {
   }
 
   .site-brand-wordmark {
-    width: 160px;
+    width: clamp(110px, 45vw, 150px);
+    max-width: 150px;
   }
 
   .hero-visit-overlay {
@@ -1584,7 +1608,7 @@ textarea {
   }
 
   .header-top-inner {
-    padding: 8px 0;
+    padding: 6px 0;
     row-gap: 0;
     column-gap: 10px;
   }

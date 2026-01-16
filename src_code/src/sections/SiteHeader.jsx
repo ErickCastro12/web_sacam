@@ -177,8 +177,13 @@ export default function SiteHeader() {
         <div className="mobile-drawer-panel">
           <div className="mobile-drawer-header">
             <span className="mobile-drawer-title">Menu</span>
-            <button type="button" className="mobile-drawer-close" onClick={closeMenu}>
-              Cerrar
+            <button
+              type="button"
+              className="mobile-drawer-close"
+              aria-label="Cerrar menu"
+              onClick={closeMenu}
+            >
+              X
             </button>
           </div>
           <nav className="nav-links nav-links-mobile" aria-label="Navegacion movil">
@@ -206,6 +211,11 @@ export default function SiteHeader() {
                 </a>
               ))}
             </div>
+          </div>
+          <div className="mobile-drawer-cta">
+            <Button href={site.whatsappUrl} variant="accent" onClick={closeMenu}>
+              Cotizar por WhatsApp
+            </Button>
           </div>
         </div>
         <button
