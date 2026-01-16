@@ -63,6 +63,20 @@ export default function SiteHeader() {
       type: "email",
     })),
   ];
+  const contactItems = [
+    ...site.phones.map((phone) => ({
+      href: phone.href,
+      label: phone.value,
+      ariaLabel: `Llamar ${phone.value}`,
+      type: "phone",
+    })),
+    ...site.emails.map((email) => ({
+      href: email.href,
+      label: email.value,
+      ariaLabel: `Enviar correo a ${email.value}`,
+      type: "email",
+    })),
+  ];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -82,20 +96,31 @@ export default function SiteHeader() {
     <header className="site-header">
       <div className="header-top">
         <div className="container header-top-inner">
-        <div className="site-brand">
-          <img
-            className="site-brand-logo"
-            src={logo}
-            alt={`${site.companyName} logo`}
-            loading="eager"
-          />
-          <img
-            className="site-brand-wordmark"
-            src={wordmark}
-            alt={`${site.companyName} identidad`}
-            loading="eager"
-          />
-        </div>
+          <div className="site-brand">
+            <img
+              className="site-brand-logo"
+              src={logo}
+              alt={`${site.companyName} logo`}
+              loading="eager"
+            />
+            <img
+              className="site-brand-wordmark"
+              src={wordmark}
+              alt={`${site.companyName} identidad`}
+              loading="eager"
+            />
+          </div>
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-label="Abrir menu"
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen(true)}
+          >
+            <span className="menu-toggle-bar" />
+            <span className="menu-toggle-bar" />
+            <span className="menu-toggle-bar" />
+          </button>
           <div className="contact-list" style={{ "--contact-columns": contactColumns }}>
             {Array.from({ length: contactColumns }).map((_, index) => (
               <div className="contact-col" key={`contact-col-${index}`}>
@@ -139,17 +164,6 @@ export default function SiteHeader() {
       </div>
       <div className="menu-bar">
         <div className="container menu-inner">
-          <button
-            type="button"
-            className="menu-toggle"
-            aria-label="Abrir menu"
-            aria-expanded={isMenuOpen}
-            onClick={() => setIsMenuOpen(true)}
-          >
-            <span className="menu-toggle-bar" />
-            <span className="menu-toggle-bar" />
-            <span className="menu-toggle-bar" />
-          </button>
           <nav className="nav-links nav-links-desktop" aria-label="Navegacion principal">
             {navItems.map((item) => (
               <a key={item.label} href={item.href}>
@@ -174,6 +188,25 @@ export default function SiteHeader() {
               </a>
             ))}
           </nav>
+          <div className="mobile-drawer-contacts">
+            <span className="mobile-drawer-label">Contactos</span>
+            <div className="mobile-drawer-contact-list">
+              {contactItems.map((item, index) => (
+                <a
+                  key={`mobile-contact-${item.type}-${index}`}
+                  className="mobile-drawer-contact-item"
+                  href={item.href}
+                  aria-label={item.ariaLabel}
+                  onClick={closeMenu}
+                >
+                  <span className="mobile-drawer-contact-icon" aria-hidden="true">
+                    {item.type === "phone" ? <PhoneIcon /> : <EmailIcon />}
+                  </span>
+                  <span>{item.label}</span>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
         <button
           type="button"
