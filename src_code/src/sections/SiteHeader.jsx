@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Button from "../components/Button.jsx";
 import { site } from "../data/site.js";
 import logo from "../logo-scam.png";
@@ -50,6 +51,20 @@ const navItems = [
 
 export default function SiteHeader() {
   const contactColumns = Math.max(site.phones.length, site.emails.length);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      document.body.style.overflow = "";
+      return;
+    }
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <header className="site-header">
@@ -100,7 +115,18 @@ export default function SiteHeader() {
       </div>
       <div className="menu-bar">
         <div className="container menu-inner">
-          <nav className="nav-links" aria-label="Navegacion principal">
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-label="Abrir menu"
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen(true)}
+          >
+            <span className="menu-toggle-bar" />
+            <span className="menu-toggle-bar" />
+            <span className="menu-toggle-bar" />
+          </button>
+          <nav className="nav-links nav-links-desktop" aria-label="Navegacion principal">
             {navItems.map((item) => (
               <a key={item.label} href={item.href}>
                 {item.label}
@@ -108,6 +134,29 @@ export default function SiteHeader() {
             ))}
           </nav>
         </div>
+      </div>
+      <div className={`mobile-drawer ${isMenuOpen ? "open" : ""}`} role="dialog" aria-modal="true">
+        <div className="mobile-drawer-panel">
+          <div className="mobile-drawer-header">
+            <span className="mobile-drawer-title">Menu</span>
+            <button type="button" className="mobile-drawer-close" onClick={closeMenu}>
+              Cerrar
+            </button>
+          </div>
+          <nav className="nav-links nav-links-mobile" aria-label="Navegacion movil">
+            {navItems.map((item) => (
+              <a key={item.label} href={item.href} onClick={closeMenu}>
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+        <button
+          type="button"
+          className="mobile-drawer-backdrop"
+          aria-label="Cerrar menu"
+          onClick={closeMenu}
+        />
       </div>
     </header>
   );

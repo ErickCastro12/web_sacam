@@ -236,6 +236,8 @@ img {
 .menu-inner {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 16px;
   padding: 10px 0;
 }
 
@@ -255,6 +257,107 @@ img {
 
 .nav-links a:hover {
   color: rgba(255, 255, 255, 0.85);
+}
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  width: 44px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.menu-toggle-bar {
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 999px;
+  display: block;
+}
+
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(11, 43, 91, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.mobile-drawer-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(84vw, 320px);
+  height: 100%;
+  background: var(--navy);
+  color: var(--white);
+  padding: 24px 20px;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mobile-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-drawer-title {
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.mobile-drawer-close {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  color: var(--white);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mobile-drawer.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-drawer.open .mobile-drawer-panel {
+  transform: translateX(0);
+}
+
+.mobile-drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: transparent;
+}
+
+.nav-links-mobile {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.nav-links-mobile a {
+  font-size: 15px;
+  letter-spacing: 0.4px;
 }
 
 .nav-actions {
@@ -1265,6 +1368,14 @@ textarea {
     position: sticky;
     top: 0;
     z-index: 1000;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .nav-links-desktop {
+    display: none;
   }
 
   .header-top-inner {
