@@ -1275,13 +1275,15 @@ textarea {
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
+    padding: 12px 0;
+    row-gap: 12px;
   }
 
   .site-brand {
     width: 100%;
     justify-content: center;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
   }
 
   .site-brand-text {
@@ -1293,6 +1295,7 @@ textarea {
     justify-content: center;
     --contact-columns: 1;
     min-width: 0;
+    gap: 6px;
   }
 
   .nav-actions {
@@ -1300,8 +1303,14 @@ textarea {
     justify-content: center;
   }
 
+  .nav-actions .btn {
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+
   .menu-inner {
     justify-content: center;
+    padding: 8px 0;
   }
 
   .nav-links {
@@ -1331,12 +1340,12 @@ textarea {
 
 @media (max-width: 600px) {
   .site-brand-logo {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
   }
 
   .site-brand-wordmark {
-    width: 190px;
+    width: 160px;
   }
 
   .hero-visit-overlay {
@@ -1357,10 +1366,27 @@ textarea {
   .contact-item {
     white-space: normal;
     text-align: center;
+    font-size: 12px;
+  }
+
+  .contact-icon,
+  .contact-icon-svg {
+    width: 16px;
+    height: 16px;
   }
 
   .contact-col {
     justify-items: center;
+  }
+
+  .header-top-inner {
+    padding: 8px 0;
+    row-gap: 10px;
+  }
+
+  .nav-actions .btn {
+    padding: 10px 16px;
+    font-size: 13px;
   }
 
   .project-modal {
