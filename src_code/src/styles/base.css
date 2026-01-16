@@ -1257,6 +1257,16 @@ textarea {
 }
 
 @media (max-width: 900px) {
+  .site-header {
+    position: static;
+  }
+
+  .menu-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
   .header-top-inner {
     grid-template-areas:
       "brand"
