@@ -51,6 +51,18 @@ const navItems = [
 
 export default function SiteHeader() {
   const contactColumns = Math.max(site.phones.length, site.emails.length);
+  const contactIcons = [
+    ...site.phones.map((phone) => ({
+      href: phone.href,
+      label: `Llamar ${phone.value}`,
+      type: "phone",
+    })),
+    ...site.emails.map((email) => ({
+      href: email.href,
+      label: `Enviar correo a ${email.value}`,
+      type: "email",
+    })),
+  ];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -104,6 +116,18 @@ export default function SiteHeader() {
                   </div>
                 )}
               </div>
+            ))}
+          </div>
+          <div className="contact-icons" aria-label="Contactos rapidos">
+            {contactIcons.map((item, index) => (
+              <a
+                key={`contact-icon-${item.type}-${index}`}
+                className="contact-icon-link"
+                href={item.href}
+                aria-label={item.label}
+              >
+                {item.type === "phone" ? <PhoneIcon /> : <EmailIcon />}
+              </a>
             ))}
           </div>
           <div className="nav-actions">

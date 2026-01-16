@@ -229,6 +229,33 @@ img {
   color: var(--blue);
 }
 
+.contact-icons {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  grid-area: contact;
+}
+
+.contact-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: rgba(31, 106, 225, 0.12);
+  color: var(--blue);
+  border: 1px solid rgba(31, 106, 225, 0.2);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.contact-icon-link:hover {
+  background: rgba(31, 106, 225, 0.18);
+  transform: translateY(-1px);
+}
+
 .menu-bar {
   background: var(--navy);
 }
@@ -295,13 +322,13 @@ img {
 .mobile-drawer-panel {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   width: min(84vw, 320px);
   height: 100%;
   background: var(--navy);
   color: var(--white);
   padding: 24px 20px;
-  transform: translateX(100%);
+  transform: translateX(-100%);
   transition: transform 0.25s ease;
   display: flex;
   flex-direction: column;
@@ -358,6 +385,23 @@ img {
 .nav-links-mobile a {
   font-size: 15px;
   letter-spacing: 0.4px;
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2100;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #25d366;
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  box-shadow: 0 12px 26px rgba(37, 211, 102, 0.35);
 }
 
 .nav-actions {
@@ -1379,15 +1423,13 @@ textarea {
   }
 
   .header-top-inner {
-    grid-template-areas:
-      "brand"
-      "contact"
-      "actions";
-    grid-template-columns: 1fr;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 12px 0;
-    row-gap: 12px;
+    padding: 8px 0;
+    row-gap: 10px;
   }
 
   .site-brand {
@@ -1402,21 +1444,22 @@ textarea {
   }
 
   .contact-list {
+    display: none;
+  }
+
+  .contact-icons {
+    display: flex;
+  }
+
+  .contact-list,
+  .contact-icons {
     width: 100%;
     justify-content: center;
-    --contact-columns: 1;
     min-width: 0;
-    gap: 6px;
   }
 
   .nav-actions {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .nav-actions .btn {
-    padding: 12px 18px;
-    font-size: 14px;
+    display: none;
   }
 
   .menu-inner {
@@ -1428,6 +1471,10 @@ textarea {
     justify-content: center;
     width: 100%;
     gap: 14px;
+  }
+
+  .whatsapp-float {
+    display: inline-flex;
   }
 
   .project-modal-content {
@@ -1491,7 +1538,7 @@ textarea {
   }
 
   .header-top-inner {
-    padding: 8px 0;
+    padding: 6px 0;
     row-gap: 10px;
   }
 

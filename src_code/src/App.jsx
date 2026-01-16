@@ -8,6 +8,7 @@ import Marcas from "./sections/Marcas.jsx";
 import CTA from "./sections/CTA.jsx";
 import Contacto from "./sections/Contacto.jsx";
 import Footer from "./sections/Footer.jsx";
+import { site } from "./data/site.js";
 
 export default function App() {
   return (
@@ -24,6 +25,13 @@ export default function App() {
         <Contacto />
       </main>
       <Footer />
+      <a
+        className="whatsapp-float"
+        href={site.whatsappUrl}
+        aria-label="Cotizar por WhatsApp"
+      >
+        WhatsApp
+      </a>
     </>
   );
 }
